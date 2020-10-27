@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.epam.com/publications"
+        xmlns:tns="http://www.epam.com/publications"
+        elementFormDefault="qualified">
+    <element name="publications">
+        <complexType>
+            <sequence>
+                <element ref="tns:publication" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="publication" type="tns:Publication" abstract="true"/>
+    <complexType name="Publication">
+        <sequence>
+            <element name="title">
+                <simpleType>
+                    <restriction base="string">
+                        <minLength value="1"/>
+                        <maxLength value="50"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="publishing-house" type="tns:PublishingHouse"/>
+        </sequence>
+        <attribute name="id" type="positiveInteger" use="required"/>
+    </complexType>
+    <complexType name="PublishingHouse">
+        <sequence>
+            <element name="name">
+                <simpleType>
+                    <restriction base="string">
+                        <pattern value="[a-zA-Z\s]+"/>
+                        <minLength value="1"/>
+                        <maxLength value="50"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="establishment-year">
+                <simpleType>
+                    <restriction base="positiveInteger">
+                        <minInclusive value="1534"/>
+                        <maxExclusive value="2020"/>
+                    </restriction>
+                </simpleType>
+            </element>
+        </sequence>
+    </complexType>
+    <element name="book" type="tns:Book" substitutionGroup="tns:publication"/>
+    <complexType name="Book">
+        <complexContent>
+            <extension base="tns:Publication">
+                <sequence>
+                    <element name="author">
+                        <simpleType>
+                            <restriction base="string">
+                                <minLength value="1"/>
+                                <maxLength value="150"/>
+                            </restriction>
+                        </simpleType>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <element name="periodical" type="tns:Periodical" substitutionGroup="tns:publication"/>
+    <complexType name="Periodical">
+        <complexContent>
+            <extension base="tns:Publication">
+                <sequence>
+                    <element name="type" type="tns:PeriodicalType"/>
+                    <element name="periodicity" type="tns:Periodicity"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <simpleType name="PeriodicalType" >
+        <restriction base="string">
+            <enumeration value="NEWSPAPER"/>
+            <enumeration value="MAGAZINE"/>
+            <enumeration value="BOOKLET"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="Periodicity">
+        <restriction base="string">
+            <enumeration value="DAILY"/>
+            <enumeration value="WEEKLY"/>
+            <enumeration value="BIWEEKLY"/>
+            <enumeration value="MONTHLY"/>
+            <enumeration value="BIMONTHLY"/>
+            <enumeration value="QUARTERLY"/>
+        </restriction>
+    </simpleType>
+</schema>

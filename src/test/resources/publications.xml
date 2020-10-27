@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<publications xmlns="http://www.epam.com/publications"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.epam.com/publications publications.xsd">
+
+    <book id = "1">
+        <title>Head First Java</title>
+        <publishing-house>
+            <name>Eksmo</name>
+            <establishment-year>1991</establishment-year>
+        </publishing-house>
+        <author>Kathy Sierra</author>
+    </book>
+    <book id = "2">
+        <title>Effective Java</title>
+        <publishing-house>
+            <name>Prentice Hall</name>
+            <establishment-year>1913</establishment-year>
+        </publishing-house>
+        <author>Joshua Bloch</author>
+    </book>
+    <periodical id = "3">
+        <title>Time</title>
+        <publishing-house>
+            <name>Time Inc</name>
+            <establishment-year>1922</establishment-year>
+        </publishing-house>
+        <type>MAGAZINE</type>
+        <periodicity>WEEKLY</periodicity>
+    </periodical>
+    <periodical id = "4">
+        <title>Newsday</title>
+        <publishing-house>
+            <name>Newsday Media Group</name>
+            <establishment-year>1940</establishment-year>
+        </publishing-house>
+        <type>NEWSPAPER</type>
+        <periodicity>DAILY</periodicity>
+    </periodical>
+</publications>
